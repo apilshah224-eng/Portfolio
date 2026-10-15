@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apil Shah | Short-Form Video Editor</title>
+<meta name="description" content="Apil Shah is a short-form video editor specializing in talking-head videos for creators, coaches, educators, podcasters and businesses.">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --panel: #f2f2f2;
+    --text: #000000;
+    --muted: #5a5a5a;
+    --line: #dcdcdc;
+    --orange: #f08a3c;
+    --orange-dark: #d97420;
+    --orange-text: #b84f00;
+    --ink: #000000;
+    --font: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+  .contact :focus-visible, footer :focus-visible { outline-color: var(--orange); }
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+  section { padding: 72px 0; }
+
+  /* Top bar */
+  .top { padding: 20px 0; }
+  .top .wrap { display: flex; justify-content: space-between; align-items: center; }
+  .brand { font-weight: 700; font-size: 18px; text-decoration: none; }
+  .top a.link { font-size: 15px; color: var(--muted); text-decoration: none; }
+  .top a.link:hover { color: var(--orange-text); }
+
+  /* Hero */
+  .hero { padding: 48px 0 72px; }
+  h1 {
+    font-size: clamp(44px, 11vw, 96px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .role { margin-top: 14px; font-size: clamp(20px, 4vw, 28px); font-weight: 500; color: var(--orange-text); }
+  .tagline { margin-top: 24px; font-size: clamp(19px, 3.2vw, 26px); line-height: 1.4; max-width: 24em; color: var(--text); }
+  .cta-row { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .btn {
+    display: inline-block;
+    font: inherit; font-weight: 700; font-size: 17px;
+    text-decoration: none;
+    padding: 16px 28px;
+    border-radius: 12px;
+    border: 2px solid var(--orange);
+    background: var(--orange); color: var(--ink);
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--orange-dark); border-color: var(--orange-dark); }
+  .btn.ghost { background: transparent; color: var(--text); border-color: var(--line); }
+  .btn.ghost { border-color: var(--text); }
+  .btn.ghost:hover { border-color: var(--orange); background: var(--orange); color: var(--ink); }
+
+  /* Work */
+  h2 { font-size: clamp(30px, 6vw, 48px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+  .lead { margin-top: 12px; color: var(--muted); max-width: 36em; }
+  .videos { margin-top: 40px; display: grid; grid-template-columns: 1fr; gap: 44px; justify-items: center; }
+  .video { width: 100%; max-width: 360px; }
+  .frame {
+    position: relative; width: 100%; aspect-ratio: 9 / 16;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; }
+  .frame .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .play {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    display: grid; place-items: center;
+    background: linear-gradient(to top, rgba(26,24,22,.55), rgba(26,24,22,0) 45%);
+    border: 0; cursor: pointer; color: inherit; font: inherit;
+  }
+  .play span {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--orange);
+    display: grid; place-items: center;
+  }
+  .play span::after {
+    content: ""; margin-left: 5px;
+    border-left: 20px solid var(--ink);
+    border-top: 12px solid transparent; border-bottom: 12px solid transparent;
+  }
+  .play:hover span { background: var(--orange-dark); }
+  .empty {
+    position: absolute; inset: 0; display: grid; place-items: center; text-align: center;
+    padding: 24px; color: var(--muted); font-size: 16px;
+  }
+  .video h3 { margin-top: 16px; font-size: 21px; font-weight: 700; line-height: 1.25; }
+  .video p { margin-top: 2px; font-size: 15px; color: var(--muted); }
+  .note { margin-top: 36px; font-size: 15px; color: var(--muted); border-left: 3px solid var(--orange); padding-left: 14px; max-width: 40em; }
+
+  /* Approach */
+  .approach { border-top: 1px solid var(--line); }
+  .points { margin-top: 32px; list-style: none; max-width: 760px; }
+  .points li { padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .points li:first-child { border-top: 1px solid var(--line); }
+  .points strong { display: block; font-size: 21px; font-weight: 700; }
+  .points span { display: block; margin-top: 4px; color: var(--muted); }
+
+  /* Contact */
+  .contact { background: #000; color: #fff; text-align: left; }
+  .contact p { margin: 16px 0 32px; color: #c4c4c4; max-width: 30em; }
+  .contact .btn { font-size: 19px; padding: 18px 32px; }
+
+  footer { background: #000; padding: 28px 0 40px; border-top: 1px solid #2e2e2e; color: #9a9a9a; font-size: 14px; }
+
+  /* Larger screens */
+  @media (min-width: 820px) {
+    body { font-size: 18px; }
+    section { padding: 96px 0; }
+    .videos { grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: start; }
+    .video { max-width: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Apil Shah</a>
+    <a class="link" href="#work">My work</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Apil Shah</h1>
+      <p class="role">Short-Form Video Editor</p>
+      <p class="tagline">Clear messaging. Purposeful editing. Content that keeps people watching.</p>
+      <div class="cta-row">
+        <a class="btn" href="#work">Watch my work</a>
+        <a class="btn ghost" data-instagram href="#contact" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <h2>My work</h2>
+      <p class="lead">Short-form talking-head videos. Tap a video to play it.</p>
+      <div class="videos" id="videos"></div>
+      <p class="note">These videos are portfolio concepts. They are not commissioned client projects.</p>
+    </div>
+  </section>
+
+  <section class="approach">
+    <div class="wrap">
+      <h2>My approach</h2>
+      <ul class="points">
+        <li><strong>Message-first editing</strong><span>Every cut serves the point the speaker is making.</span></li>
+        <li><strong>Clean captions</strong><span>Easy to read, well timed, and never in the way.</span></li>
+        <li><strong>Purposeful visuals</strong><span>Graphics and b-roll are added only when they help the message land.</span></li>
+        <li><strong>Natural pacing</strong><span>Tight enough to hold attention, relaxed enough to sound human.</span></li>
+        <li><strong>Speaker-focused storytelling</strong><span>The person on screen stays the star of the video.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Let's talk about your videos</h2>
+      <p>I work with content creators, coaches, educators, podcasters, professionals and businesses. Send me a message on Instagram to get started.</p>
+      <a class="btn" data-instagram href="#contact" target="_blank" rel="noopener">Message me on Instagram</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Apil Shah. Short-Form Video Editor.</div>
+</footer>
+
+<script>
+/* ==============================================================
+   EDIT ONLY THIS PART
+   1. Instagram: paste your profile link between the quotes.
+      Example: "https://instagram.com/yourname"
+   2. Videos: see the note above the VIDEOS list below.
+   ============================================================== */
+const INSTAGRAM = "";
+
+/* For each video, fill in ONE of these:
+   file:  the name of a video you uploaded to the same GitHub
+          folder, like "bookkeeping.mp4"   (plays directly on the page)
+   video: a YouTube link                    (alternative)          */
+const VIDEOS = [
+  { title: "Bookkeeping and Accounting", topic: "Talking-head concept", file: "bookkeeping.mp4",     video: "" },
+  { title: "Virtual Assistant",          topic: "Talking-head concept", file: "virtual-assistant.mp4", video: "" },
+  { title: "Credit Repair",              topic: "Talking-head concept", file: "credit-repair.mp4",    video: "" }
+];
+/* ============================================================== */
+
+/* Instagram buttons */
+document.querySelectorAll("[data-instagram]").forEach(function (a) {
+  if (INSTAGRAM) {
+    a.href = INSTAGRAM;
+  } else {
+    a.addEventListener("click", function (e) { e.preventDefault(); });
+  }
+});
+
+/* Get a YouTube ID from a link or a plain ID */
+function getId(input) {
+  if (!input) return "";
+  input = input.trim();
+  var m = input.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([A-Za-z0-9_-]{11})/);
+  if (m) return m[1];
+  if (/^[A-Za-z0-9_-]{11}$/.test(input)) return input;
+  return "";
+}
+
+/* Build the three video cards. The video loads only when tapped,
+   which keeps the page fast on phones. */
+var list = document.getElementById("videos");
+VIDEOS.forEach(function (v) {
+  var id = getId(v.video);
+  var card = document.createElement("article");
+  card.className = "video";
+
+  var frame = document.createElement("div");
+  frame.className = "frame";
+
+  if (v.file) {
+    var vid = document.createElement("video");
+    vid.controls = true;
+    vid.playsInline = true;
+    vid.preload = "metadata";
+    vid.setAttribute("playsinline", "");
+    vid.setAttribute("aria-label", v.title);
+    vid.src = v.file + "#t=0.1";
+    vid.onerror = function () {
+      frame.innerHTML = '<div class="empty">Video coming soon</div>';
+    };
+    frame.appendChild(vid);
+  } else if (id) {
+    var img = document.createElement("img");
+    img.className = "poster";
+    img.alt = "";
+    img.loading = "lazy";
+    img.src = "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg";
+    img.onerror = function () { img.remove(); };
+    frame.appendChild(img);
+
+    var btn = document.createElement("button");
+    btn.className = "play";
+    btn.setAttribute("aria-label", "Play " + v.title);
+    btn.innerHTML = "<span></span>";
+    btn.onclick = function () {
+      frame.innerHTML = '<iframe title="' + v.title + '" src="https://www.youtube-nocookie.com/embed/' + id +
+        '?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    };
+    frame.appendChild(btn);
+  } else {
+    var empty = document.createElement("div");
+    empty.className = "empty";
+    empty.textContent = "Video coming soon";
+    frame.appendChild(empty);
+  }
+
+  var h = document.createElement("h3");
+  h.textContent = v.title;
+  var p = document.createElement("p");
+  p.textContent = v.topic;
+
+  card.appendChild(frame);
+  card.appendChild(h);
+  card.appendChild(p);
+  list.appendChild(card);
+});
+</script>
+</body>
+</html>
